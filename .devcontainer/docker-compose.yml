@@ -1,0 +1,25 @@
+version: "3.8"
+
+services:
+  typst:
+    image: ghcr.io/jmuchovej/devcontainers/typst:latest
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        VARIANT: "1-bookworm" # 例: variantの値
+        TYPST_VERSION: "v0.11.1" # 例: typstのバージョン
+        TYPSTYLE_VERSION: "v0.11.32" # 例: typstyleのバージョン
+    environment:
+      - TYPST_VERSION=v0.11.1
+      - TYPSTYLE_VERSION=v0.11.32
+    volumes:
+      - .:/workdir
+      - ~/.gitconfig:/root/.gitconfig
+    labels:
+      "org.opencontainers.image.source": "https://github.com/jmuchovej/devcontainers"
+      "org.opencontainers.image.authors": "John Muchovej <jmuchovej@pm.me>"
+      "org.opencontainers.image.url": "https://github.com/jmuchovej/devcontainers/tree/main/src/templates/typst"
+      "org.opencontainers.image.documentation": "https://github.com/jmuchovej/devcontainers/tree/main/src/templates/typst/README.md"
+      "org.opencontainers.image.title": "Typst v0.11.1"
+    command: ["sleep", "infinity"]
